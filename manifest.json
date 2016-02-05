@@ -1,0 +1,23 @@
+{
+   "background": {
+      "scripts": [ "defaults.js" ]
+   },
+   "browser_action": {
+      "default_icon": "6.png",
+      "default_popup": "popup.html"
+   },
+   "description": "Displays all the images, videos and gifs in the webpage and also downloads them.",
+   "icons": {
+      "128": "6.png",
+      "16": "6.png",
+      "48": "6.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCtWPB7AiIzvLnrYoowUDRHk5miI/dfyUzQZ9xcPd59SB7lNFgrwKDobcQ6wHi6/N5SNW8f0/KW3J9zmN5GeZglQb52spW9Ti1lIbgqPWN9Y4m4ZRtcP0CWaLQTopfZ7gUbzrD0KIuzk4B+Nc2aZY8Xz4t74b5M7up5KaaQSxQarQIDAQAB",
+   "manifest_version": 2,
+   "name": "Pics and file Downloader",
+   "options_page": "options.html",
+   "permissions": [ "tabs", "http://*/*", "https://*/*" ],
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "1.3",
+   "web_accessible_resources": [ "images/1.png", "images/2.png" ]
+}

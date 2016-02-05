@@ -1,0 +1,185 @@
+<!doctype html>
+  <head>
+    <script src="popup.js"></script>
+    <script src="jquery-1.7.2.min.js"></script>
+    <script src="jss.js"></script>
+    <style>
+      html {
+    overflow: auto;
+}
+body {
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(255,0,0,0.8); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(255,0,0,0.4); 
+}
+      
+      #filters_container
+      {
+        position: fixed;
+        top: 0px;
+        margin-left: -5px;
+        padding: 5px 0px 5px 5px;
+        background: #fff;
+        width: 100%;
+      }
+      
+      #download_button
+      {
+        width: 72px;
+        height: 24px;
+      }
+      
+      .notification
+      {
+        color: green;
+      }
+      
+      .warning
+      {
+        color: red;
+      }
+      
+      #images_table th,
+      #images_table td
+      {
+        padding-top: 3px;
+      }
+      
+      .open_image_button,
+      .download_image_button
+      {
+        height: 24px;
+        cursor: pointer;
+        
+        background-size: 24px;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      
+      .open_image_button
+      {
+        background-image: url(images/1.png);
+      }
+      
+      .download_image_button
+      {
+        background-image: url(images/2.png);
+      }
+      
+	#search input[type="text"] {
+    background: url(search-dark.png) no-repeat 10px 6px #444;
+    border: 0 none;
+    font: bold 12px Arial,Helvetica,Sans-serif;
+    color: #777;
+    width: 100px;
+    padding: 6px 15px 6px 35px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+    -webkit-transition: all 0.7s ease 0s;
+    -moz-transition: all 0.7s ease 0s;
+    -o-transition: all 0.7s ease 0s;
+    transition: all 0.7s ease 0s;
+    }
+	
+#search input[type="text"]:focus {
+    width: 200px;
+    }
+    .download {
+	-moz-box-shadow:inset 0px 1px 0px 0px #e184f3;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #e184f3;
+	box-shadow:inset 0px 1px 0px 0px #e184f3;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #c123de), color-stop(1, #a20dbd) );
+	background:-moz-linear-gradient( center top, #c123de 5%, #a20dbd 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#c123de', endColorstr='#a20dbd');
+	background-color:#c123de;
+	-webkit-border-top-left-radius:20px;
+	-moz-border-radius-topleft:20px;
+	border-top-left-radius:20px;
+	-webkit-border-top-right-radius:20px;
+	-moz-border-radius-topright:20px;
+	border-top-right-radius:20px;
+	-webkit-border-bottom-right-radius:20px;
+	-moz-border-radius-bottomright:20px;
+	border-bottom-right-radius:20px;
+	-webkit-border-bottom-left-radius:20px;
+	-moz-border-radius-bottomleft:20px;
+	border-bottom-left-radius:20px;
+	text-indent:0;
+	border:1px solid #a511c0;
+	display:inline-block;
+	color:#ffffff;
+	font-family:Georgia;
+	font-size:10px;
+	font-weight:bold;
+	font-style:italic;
+	height:24px;
+	line-height:24px;
+	width:121px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #9b14b3;
+}
+.download:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #a20dbd), color-stop(1, #c123de) );
+	background:-moz-linear-gradient( center top, #a20dbd 5%, #c123de 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#a20dbd', endColorstr='#c123de');
+	background-color:#a20dbd;
+}.download:active {
+	position:relative;
+	top:1px;
+}
+    
+    </style>
+  </head>
+  
+  <body  style="background-image: url(img.jpg);">
+    <div id="filters_container"><div id="search">
+      <input type="text" id="filter_textbox" placeholder="Filter by URL" title="Filter by parts of the URL or regular expressions." />
+      <input type="button" id="download_button" value="Download" disabled="true"  class="download"/>
+      </div>
+      <span id="only_images_from_links_container">
+        <label title="Can be useful if you want to filter out things like avatars and icons">
+          <input type="checkbox" id="only_images_from_links_checkbox" />
+          <a style="font-family:Georgia;font-size:13px;font-weight:bold;font-style:italic;color:red;">Only images from links</a>
+        </label>
+      </span>
+      
+      <span id="sort_by_url_container">
+        <label title="By default, images are shown in the order they appear on the page. Check this box to sort them alphabetically by URL instead.">
+          <input type="checkbox" id="sort_by_url_checkbox" />
+          <a style="font-family:Georgia;font-size:12px;font-weight:bold;font-style:italic;color:red;">Sort by URL</a>
+        </label>
+      </span>
+    </div>
+    
+    <table id="images_table" cellspacing="0" cellpadding="0"></table>
+  </body>
+</html>

@@ -1,0 +1,180 @@
+<html>
+  <head>
+    <title>Image Downloader | Options</title>
+    <style>
+	body { padding:5px 500px; font: #fff ,14px Verdana, Geneva, sans-serif;
+	background:url("10.jpg") repeat scroll 0 0 #282828;	 }
+	label {
+	 margin-left: 10px;
+	 color: #999999;
+	 font-family:"Times New Roman", Times, serif;
+	 }
+	legend{
+		font-size:20px;
+		color:#ffffff;
+	}
+      select,
+      input[type="color"],
+      input[type="number"]
+      {
+        width: 75px;
+      }
+      
+      input[type="number"]
+      {
+        text-align: right;
+        margin-right: 2px;
+      }
+      
+      #notifications .success
+      {
+        color: green;
+      }
+      
+      #notifications .warning
+      {
+        color: red;
+      }
+      
+      .left
+      {
+        float: left;
+      }
+      .right
+      {
+        float: right;
+      }
+      .clear
+      {
+        clear: both;
+      }
+      	 #customers
+	{
+		font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+		width:100%;
+		border-collapse:collapse;
+	}
+	#customers td, #customers th 
+	{
+		font-size:1em;
+		border:1px solid #98bf21;
+		padding:3px 7px 2px 7px;
+		color:white;
+	}
+	#customers tr.alt td 
+	{
+		color:#000000;
+		background-color:#EAF2D3;
+	}
+	
+    </style>
+    <script src="defaults.js"></script>
+    <script src="options.js"></script>
+    <script src="jquery-1.7.2.min.js"></script>
+    <script src="jss.js"></script>
+  </head>
+  
+  <body>
+    <fieldset>
+      <legend>General</legend>
+      
+      <label title="Requires confirmation when you press the Download button">
+        <input type="checkbox" id="show_download_confirmation_checkbox" />
+        Show download confirmation
+      </label>
+      
+      <br />
+      <label title="Flashes a notification to let you know your download is starting">
+        <input type="checkbox" id="show_download_notification_checkbox" />
+        Show downloading notification
+      </label>
+    </fieldset>
+    
+    <fieldset>
+      <legend>Filters</legend>
+      
+      <label title="Enables selection between normal, wildcard and regex filter mode">
+        <input type="checkbox" id="show_filter_mode_checkbox" />
+        Show advanced modes
+      </label>
+      
+      <br />
+      <label title="Enables the option to only show images from links on the page; can be useful if you want to filter out things like avatars and icons">
+        <input type="checkbox" id="show_only_images_from_links_checkbox" />
+        Show "Only images from links" option
+      </label>
+      
+      <br />
+      <label title="Enables the option to sort the images by URL instead of displaying them in the order they appear on the page">
+        <input type="checkbox" id="show_sort_by_url_checkbox" />
+        Show "Sort by URL" option
+      </label>
+    </fieldset>
+    
+    <fieldset>
+      <legend>Images</legend>
+      
+      <label title="Displays a button next to each image to individually download it. This download does not require confirmation, even if you've enabled the confirmation option.">
+        <input type="checkbox" id="show_download_image_button_checkbox" />
+        Show a download button
+      </label>
+      
+      <br />
+      <label title="Displays a button next to each image to open it in a new tab">
+        <input type="checkbox" id="show_open_image_button_checkbox" />
+        Show an open button
+      </label>
+      
+      
+      <table id=customers>
+        <tr title="Setting the minimum width can be useful for images that are too small to make out">
+          <td><label for="image_min_width_numberbox">Minimum Width:</label></td>
+          <td><input type="number" id="image_min_width_numberbox" min="0" max="720" />px</td>
+        </tr>
+        
+        <tr title="Setting the maximum width prevents bigger images from taking too much space, and also adjusts the size of the popup" >
+          <td><label for="image_max_width_numberbox">Maximum Width:</label></td>
+          <td><input type="number" id="image_max_width_numberbox" min="200" max="1300" />px</td>
+        </tr>
+        
+        <tr>
+          <td><label for="image_border_width_numberbox">Border Width:</label></td>
+          <td><input type="number" id="image_border_width_numberbox" min="0" max="5" />px</td>
+        </tr>
+        
+        <tr >
+          <td><label for="image_border_style_dropdown" class="alt">Border Style:</label></td>
+          <td>
+            <select id="image_border_style_dropdown">
+              <option value="solid">Solid</option>
+              <option value="dotted">Dotted</option>
+              <option value="dashed">Dashed</option>
+            </select>
+          </td>
+        </tr>
+        
+        <tr >
+          <td><label for="image_border_color_picker">Border Color:</label></td>
+          <td><input type="color" id="image_border_color_picker" /></td>
+        </tr>
+      </table>
+      
+      <img src="6.png" width="250px" height="200px" />
+    </fieldset>
+    
+    <div>
+      <div class="left">
+        <input type="button" id="save_button" value="Save" title="Saves the current settings" />
+        <input type="button" id="reset_button" value="Reset" title="Resets all settings to their defaults; requires Save to preserve the changes" />
+      </div>
+      
+      <div class="right">
+        <input type="button" id="clear_data_button" value="Clear Data" title="Clears all data that this extension has stored on your machine" />
+      </div>
+      
+      <div class="clear"></div>
+    </div>
+    
+    <div id="notifications"></div>
+  </body>
+</html>
